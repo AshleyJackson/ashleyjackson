@@ -80,6 +80,28 @@ Key architecture decisions:
 
 ---
 
+### [whoistld](https://www.npmjs.com/package/whoistld)
+
+TypeScript package for parsing domain names and extracting TLD characteristics — WHOIS privacy support, registration restrictions, DNSSEC, IDN, and category classification. All data embedded locally, zero network requests.
+
+- **Language**: TypeScript (strict)
+- **Validation**: Zod schemas for all input/output types
+- **Build**: `tsc` (CJS output + DTS)
+- **Dependencies**: `zod`, `axios`
+- **Package**: [`npm install whoistld`](https://www.npmjs.com/package/whoistld)
+
+API surface:
+- `parseDomain(input)` — parse a domain into TLD, domain, subdomain, and TLD characteristics
+- `supportsWhoisPrivacy(tld)` — check if a TLD supports WHOIS privacy
+- `getTldData(tld)` — get full characteristics for a TLD
+- `getAllTlds()` — list all known TLDs
+- `isKnownTld(tld)` — check if a TLD exists in the database
+
+TLD characteristics tracked: `whoisPrivacySupport`, `registrationRestrictions` (none/governmental/educational/organizational/geographic/reserved), `dnssecSupport`, `idn`, `category` (generic/country-code/sponsored/infrastructure/test/generic-restricted), and `description`.
+
+
+---
+
 ## Tech Stack Summary
 
 | Area | Technologies |
@@ -95,4 +117,5 @@ Key architecture decisions:
 | Maps | Leaflet |
 | Charts | Chart.js |
 | Email | Resend |
+| Validation | Zod |
 | Monitoring | Sentry |
