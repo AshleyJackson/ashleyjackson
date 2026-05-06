@@ -148,18 +148,18 @@ TLD characteristics tracked: `whoisPrivacySupport`, `registrationRestrictions` (
 
 ## Tech Stack Summary
 
-|| Area | Technologies |
-||---|---|
-|| Frameworks | SvelteKit, Svelte 5, TypeScript |
-|| Databases | Neon PostgreSQL (Prisma + Kysely) |
-|| Caching | Upstash Redis |
-|| Deployment | Vercel (Edge + Serverless) |
-|| Auth | Lucia Auth, OAuth 2.0 |
-|| Payments | Polar.sh |
-|| Analytics | mytart (custom-built, 17 providers) |
-|| AI | Vercel AI SDK |
-|| Maps | Leaflet |
-|| Charts | Chart.js |
-|| Email | Resend |
-|| Validation | Zod |
-|| Monitoring | Sentry |
+| Area | Technologies |
+|---|---|
+| Frameworks | SvelteKit, Svelte 5, TypeScript |
+| Databases | Neon PostgreSQL (Prisma + Kysely) |
+| Caching | Upstash Redis |
+| Deployment | Vercel (Edge + Serverless) |
+| Auth | Lucia Auth, OAuth 2.0 |
+| Payments | Polar.sh |
+| Analytics | mytart (custom-built, 17 providers) |
+| AI | Vercel AI SDK |
+| Maps | Leaflet |
+| Charts | Chart.js |
+| Email | Resend |
+| Validation | Zod |
+| Monitoring | Sentry |
