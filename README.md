@@ -6,6 +6,18 @@ Building web applications with a focus on serverless architecture, real-time dat
 
 ---
 
+## Table of Contents
+
+- [Projects](#projects)
+  - [bomweather.com](#bomweathercom)
+  - [aitrackerstats.com](#aitrackerstatscom)
+  - [obsidian-charts](#obsidian-charts)
+  - [mytart](#mytart)
+  - [whoistld](#whoistld)
+- [Tech Stack Summary](#tech-stack-summary)
+
+---
+
 ## Projects
 
 ### [bomweather.com](https://bomweather.com)
@@ -49,6 +61,40 @@ AI-powered web analytics platform providing traffic analysis, insights, and team
 
 Features: analytics dashboard with charts, historical data archives, custom domain verification, multi-user team management, subscription billing, AI-powered traffic recommendations, and privacy/compliance tooling.
 
+---
+
+### [obsidian-charts](https://github.com/AshleyJackson/obsidian-charts)
+
+Obsidian plugin for creating interactive charts directly in your notes using Chart.js. Originally a fork, extensively refactored and enhanced with new features, a complete test suite, and modernized architecture.
+
+- **Language**: TypeScript (strict)
+- **Plugin Framework**: Obsidian API + Svelte UI components
+- **Charts**: Chart.js v4 with Sankey, Financial (Candlestick/OHLC), and 60+ Chart.js options
+- **Testing**: Jest with comprehensive mocks (Obsidian, Chart.js, DOM APIs)
+- **Build**: Rollup, automated releases via GitHub Actions
+- **Package**: [`obsidian-charts`](https://github.com/AshleyJackson/obsidian-charts)
+
+**Key Features:**
+- **YAML-based chart definitions** in ` ```chart ` code blocks with full type safety
+- **8 Chart types**: Bar, Line, Pie, Doughnut, Radar, Polar Area, Sankey, Candlestick, OHLC
+- **Table linking**: Bind charts to Markdown tables via block IDs — data stays in sync
+- **Date auto-transpose**: Tables with date columns automatically format as time series
+- **Best fit lines**: Linear regression computed against data series via `bestFit` modifier
+- **Graphical creator**: Command palette UI for building charts without typing YAML
+- **Chart → Image**: Export rendered charts as PNG/JPEG with customizable quality
+- **Dataview integration**: `window.renderChart()` API for programmatic rendering in DataviewJS
+
+**Architecture & Refinements (vs original):**
+- **Completely rewritten chart rendering pipeline** (`chartRenderer.ts`) with proper dataset preparation, color management, and Chart.js option handling
+- **Table-to-chart conversion** (`chartFromTable.ts`) with empty-cell handling, layout detection (rows/columns), and cross-file linking support
+- **Modernized plugin lifecycle**: Proper chart destruction, resize handling, and metadata change detection with debouncing
+- **YAML preprocessing utility** to handle Obsidian's YAML parsing edge cases and type coercion (strings → numbers, empty → null)
+- **Robust test suite** (700+ tests) with Jest mocks for Obsidian, Chart.js, Sankey, Financial, date adapters, and color libraries
+- **Release automation**: Version validation, semver enforcement, and conditional tag/draft/prerelease handling in GitHub Actions
+- **UI improvements**: Collapsible settings sections, helper modals, custom picker integration, and dark mode enhancements
+- **Code quality**: Type-safe interfaces (`types.d.ts`), separated concerns (rendering vs table logic), and comprehensive error handling
+
+**Modifiers & Options:** 40+ chart modifiers including `stacked`, `fill`, `tension`, `stepped`, `spanGaps`, `beginAtZero`, axis controls (`xMin`/`yMax`), per-series best fit, and full axis title/display configuration.
 
 ---
 
@@ -77,7 +123,6 @@ Key architecture decisions:
 - **Global consent**: single `consent: true/false` flag configures GA Consent Mode v2 + Meta Pixel grant/revoke
 - **Never throws**: errors returned as `TrackResult` with `success: false`
 
-
 ---
 
 ### [whoistld](https://www.npmjs.com/package/whoistld)
@@ -99,23 +144,22 @@ API surface:
 
 TLD characteristics tracked: `whoisPrivacySupport`, `registrationRestrictions` (none/governmental/educational/organizational/geographic/reserved), `dnssecSupport`, `idn`, `category` (generic/country-code/sponsored/infrastructure/test/generic-restricted), and `description`.
 
-
 ---
 
 ## Tech Stack Summary
 
-| Area | Technologies |
-|---|---|
-| Frameworks | SvelteKit, Svelte 5, TypeScript |
-| Databases | Neon PostgreSQL (Prisma + Kysely) |
-| Caching | Upstash Redis |
-| Deployment | Vercel (Edge + Serverless) |
-| Auth | Lucia Auth, OAuth 2.0 |
-| Payments | Polar.sh |
-| Analytics | mytart (custom-built, 17 providers) |
-| AI | Vercel AI SDK |
-| Maps | Leaflet |
-| Charts | Chart.js |
-| Email | Resend |
-| Validation | Zod |
-| Monitoring | Sentry |
+|| Area | Technologies |
+||---|---|
+|| Frameworks | SvelteKit, Svelte 5, TypeScript |
+|| Databases | Neon PostgreSQL (Prisma + Kysely) |
+|| Caching | Upstash Redis |
+|| Deployment | Vercel (Edge + Serverless) |
+|| Auth | Lucia Auth, OAuth 2.0 |
+|| Payments | Polar.sh |
+|| Analytics | mytart (custom-built, 17 providers) |
+|| AI | Vercel AI SDK |
+|| Maps | Leaflet |
+|| Charts | Chart.js |
+|| Email | Resend |
+|| Validation | Zod |
+|| Monitoring | Sentry |
